@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Actions from './../actions';
-import {Text, View, Platform, TextInput, ImageBackground, Image, Dimensions} from 'react-native'
+import {Text, View, Platform, TextInput, ImageBackground, Image, Dimensions, TouchableOpacity} from 'react-native'
 import LeftMenuNavigation from '../components/LeftMenuNavigation'
 import {images} from "../images";
 import style from './style';
 import GridView from 'react-native-super-grid'
 import MainMenuData from "../service/data/mainMenuData";
-
+import {BOI_TEN} from "../service/data/key";
+import BoiTenScreen from "./boiten"
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,14 @@ class Home extends Component {
             mainMenuData: data
         })
     }
-
+    _itemClick(item){
+        console.log("OK", item);
+        switch (item.id){
+            case BOI_TEN:
+                this.props.navigator.push({screen: BoiTenScreen, item: item})
+                break;
+        }
+    }
     _renderContent() {
         return (<ImageBackground source={images.home_background}
                                  style={{flex: 1, width: undefined, height: undefined, backgroundColor: 'transparent'}}
@@ -34,12 +42,12 @@ class Home extends Component {
                 fixed = {false}
                 spacing = {0}
                 renderItem={item => (
-                    <View style={{flexDirection: 'column',
-                        justifyContent: 'center',}}>
+                    <TouchableOpacity style={{flexDirection: 'column',
+                        justifyContent: 'center',}} onPress={()=>this._itemClick(item)}>
                     <Image source={item.icon}
                                      style={{flex: 1, width: Dimensions.get('window').width, height: 80, backgroundColor: 'transparent'}}
                                      resizeMode={Image.resizeMode.contain}/>
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
         </ImageBackground>)

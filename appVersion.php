@@ -13,7 +13,8 @@ class AppVersion
      */
     function __construct()
     {
-
+        $this->dbReference = new systemConfig();
+        $this->dbConnect = $this->dbReference->connectDB();
     }
 
     function __destruct()
@@ -23,8 +24,6 @@ class AppVersion
 
     function getAllVersion()
     {
-        $this->dbReference = new systemConfig();
-        $this->dbConnect = $this->dbReference->connectDB();
         if ($this->dbConnect == NULL) {
             $this->dbReference->sendResponse(503, '{"error_message":' . $this->dbReference->getStatusCodeMessage(503) . '}');
         } else {
@@ -58,25 +57,52 @@ class AppVersion
         }
     }
 
-    function CallAPI($method, $url, $data = false)
-    {
-        // Get cURL resource
-        $curl = curl_init();
-// Set some options - we are passing in a useragent too here
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'http://api.lichvansu.net:8080/get-name',
-            CURLOPT_USERAGENT => 'Codular Sample cURL Request',
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => array(
-                cmd => 'YNT',
-                name => 'h'
-            )
-        ));
-// Send the request & save response to $resp
-        $resp = curl_exec($curl);
-// Close request to clear up some resources
-        curl_close($curl);
-        return $resp;
-    }
+    // Method: POST, PUT, GET etc
+// Data: array("param" => "value") ==> index.php?param=value
+
+//    function CallAPI($method, $url, $data = false)
+//    {
+//        $curl = curl_init();
+//        curl_setopt($curl, CURLOPT_URL, $url);
+//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+//        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+//        curl_setopt($curl, CURLOPT_HEADER, 1);
+//        curl_setopt($curl, CURLOPT_HTTPGET, 1);
+//        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false );
+//        curl_setopt($curl, CURLOPT_DNS_CACHE_TIMEOUT, 2 );
+//        curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+//        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,  0);
+//        switch ($method)
+//        {
+//            case "POST":
+//                curl_setopt($curl, CURLOPT_POST, count($data));
+//
+//                if ($data)
+//                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+//                break;
+//            case "PUT":
+//                curl_setopt($curl, CURLOPT_PUT, 1);
+//                break;
+//            default:
+//                if ($data)
+//                    $url = sprintf("%s?%s", $url, http_build_query($data));
+//        }
+//
+////        // Optional Authentication:
+////        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+////        curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+//
+//        $result = curl_exec($curl);
+//        if($result === false)
+//        {
+//            echo 'Curl error: ' . curl_error($curl);
+//        }
+//        else
+//        {
+//            echo 'Operation completed without any errors';
+//        }
+//        curl_close($curl);
+//        $this->dbReference->sendResponse(200, $result);
+//    }
 } ?>
