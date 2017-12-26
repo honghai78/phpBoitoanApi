@@ -1,2 +1,2 @@
-export const HEADER_TYPE = 'application/json; charset=utf-8';
-export const HOST_SERVER = 'http://192.168.2.1/boitoanapp/';
+export const HEADER_TYPE = 'application/x-www-form-urlencoded;charset=UTF-8';
+export const HOST_SERVER = 'https://boitoanonline.000webhostapp.com/';

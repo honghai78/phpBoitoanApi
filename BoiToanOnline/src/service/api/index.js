@@ -20,10 +20,10 @@ export default class APIService extends React.Component {
             method: 'POST',
             headers: {
                 'Content-Type': Config.HEADER_TYPE,
-                'Cookie': await AppData.getCookie(),
-                'X-CSRFToken': await AppData.getToken()
+                // 'Cookie': await AppData.getCookie(),
+                // 'X-CSRFToken': await AppData.getToken()
             },
-            body: JSON.stringify(body)
+            body: body
         });
     }
 }

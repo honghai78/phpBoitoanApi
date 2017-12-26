@@ -18,6 +18,8 @@ class BoiTen extends Component {
     }
     componentWillMount() {
         let data = new BoiTenMenu().getData();
+        let params = {cmd: 'YNT', name: 'h'};
+        this.props.actions.boiTen(params);
         this.setState({
             menuBoiTen: data
         })
