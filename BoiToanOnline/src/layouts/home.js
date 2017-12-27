@@ -24,13 +24,20 @@ class Home extends Component {
         })
     }
     _itemClick(item){
-        console.log("OK", item);
         switch (item.id){
             case BOI_TEN:
                 this.props.navigator.push({screen: BoiTenScreen, item: item})
                 break;
         }
     }
+    _renderItem(item){
+        return (<TouchableOpacity onPress={()=>this._itemClick(item)}>
+            <Image source={item.icon}
+                   style={{flex: 1, width: 80, height: 80, backgroundColor: 'transparent'}}
+                   resizeMode={Image.resizeMode.contain}/>
+        </TouchableOpacity>)
+    }
+
     _renderContent() {
         return (<ImageBackground source={images.home_background}
                                  style={{flex: 1, width: undefined, height: undefined, backgroundColor: 'transparent'}}
@@ -41,14 +48,7 @@ class Home extends Component {
                 style={style.gridView}
                 fixed = {false}
                 spacing = {0}
-                renderItem={item => (
-                    <TouchableOpacity style={{flexDirection: 'column',
-                        justifyContent: 'center',}} onPress={()=>this._itemClick(item)}>
-                    <Image source={item.icon}
-                                     style={{flex: 1, width: Dimensions.get('window').width, height: 80, backgroundColor: 'transparent'}}
-                                     resizeMode={Image.resizeMode.contain}/>
-                    </TouchableOpacity>
-                )}
+                renderItem={(item)=>this._renderItem(item)}
             />
         </ImageBackground>)
     }

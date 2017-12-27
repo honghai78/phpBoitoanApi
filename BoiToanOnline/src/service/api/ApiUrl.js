@@ -9,4 +9,8 @@ export default class ApiUrl {
     static boiTen(){
         return "http://api.lichvansu.net:8080/get-name";
     }
+
+    static boiTenDataContent() {
+        return HOST_SERVER + 'boi_ten_data/';
+    }
 }

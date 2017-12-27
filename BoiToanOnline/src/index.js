@@ -99,7 +99,7 @@ class App extends Component {
                            titleText={this.props.state.titleModal}
                            contentText={this.props.state.contentModal}
                            titleColor={this.props.state.ntfType != null ? '#373737' : '#FF7167'}/>);
-        if(this.props.state.appConfig!=null){
+
             return ( <View style={{flex: 1}}>
                 <StatusBarCustom backgroundColor="#503655" barStyle="light-content"/>
                 <Navigator initialRoute={{screen: Home}}
@@ -112,16 +112,6 @@ class App extends Component {
                 {alertNotification}
             </View>)
         }
-        else{
-            return (
-                <View style={{flex: 1}}>
-                    <StatusBarCustom backgroundColor="#503655" barStyle="light-content"/>
-                    {objLoading != null ? objLoading : null}
-                    {alertNotification}
-                </View>
-            )
-        }
-    }
 
 }
 const styles = StyleSheet.create({

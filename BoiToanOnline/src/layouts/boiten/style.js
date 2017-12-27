@@ -3,10 +3,8 @@ export default {
         flex: 1
     },
     item_row: {flex: 1, width: undefined, height: 50,
-        marginBottom: 15,
+        marginBottom: 5,
         borderRadius: 3,
-        marginLeft: 15,
-        marginRight: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#dddddd',
         paddingTop: 10,
@@ -19,6 +17,7 @@ export default {
         alignItems: 'center',
         paddingLeft: 30,
         flexDirection: 'row',
+        marginTop: 10
     },
     view_item: {
 

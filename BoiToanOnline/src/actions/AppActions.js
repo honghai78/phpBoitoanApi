@@ -79,3 +79,22 @@ export function boiTen(params) {
         })
     }
 }
+
+export function getBoiTenDataContent() {
+    return (dispatch) => {
+        APIServices.get(ApiUrl.boiTenDataContent()).then((response) => {
+            return response.json();
+        }).then((responseJson) => {
+            dispatch({
+                type: ActionTypes.APP_GET_BOI_TEN_CONTENT_DATA_SUCCESS,
+                boiTenDataLayoutContent: responseJson
+            })
+        }).catch((error) => {
+            console.log(error);
+            dispatch({
+                type: ActionTypes.APP_GET_BOI_TEN_CONTENT_DATA_ERROR,
+                boiTenDataLayoutContent: []
+            })
+        })
+    }
+}

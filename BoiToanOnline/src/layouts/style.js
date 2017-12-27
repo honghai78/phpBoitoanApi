@@ -9,7 +9,8 @@ export default {
         marginRight: 0,
     },
     gridView: {
-        paddingTop: 25,
+        paddingTop: 10,
         flex: 1,
+        margin: 20
     }
 }

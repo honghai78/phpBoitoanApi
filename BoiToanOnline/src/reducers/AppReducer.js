@@ -11,7 +11,8 @@ const initialState = {
     boiTenData: null,
     isShowModal: false,
     titleModal: null,
-    contentModal: null
+    contentModal: null,
+    boiTenDataLayoutContent: null
 };
 
 export default (state = initialState, action) => {
@@ -77,6 +78,16 @@ export default (state = initialState, action) => {
                 isShowModal: action.isShowModal,
                 titleModal: action.titleModal,
                 contentModal: action.contentModal
+            };
+        case ActionTypes.APP_GET_BOI_TEN_CONTENT_DATA_SUCCESS:
+            return {
+                ...state,
+                boiTenDataLayoutContent: action.boiTenDataLayoutContent
+            };
+        case ActionTypes.APP_GET_BOI_TEN_CONTENT_DATA_ERROR:
+            return {
+                ...state,
+                boiTenDataLayoutContent: action.boiTenDataLayoutContent
             };
         default:
             return state;
